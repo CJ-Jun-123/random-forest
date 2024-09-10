@@ -20,33 +20,33 @@ model = joblib.load('random-forest.joblib')
 tfidf_vectorizer_loaded = joblib.load('tfidf_vectorizer.joblib')
 
 # Initialize the lemmatizer, stemmer, and stop words
-# lemmatizer = WordNetLemmatizer()
-# stemmer = LancasterStemmer()
-# stop_words = set(stopwords.words('english'))
+lemmatizer = WordNetLemmatizer()
+stemmer = LancasterStemmer()
+stop_words = set(stopwords.words('english'))
 
 # Function to preprocess text
-# def preprocess_text(text):
-#     # Convert to lowercase
-#     text = str(text).lower()
+def preprocess_text(text):
+    # Convert to lowercase
+    text = str(text).lower()
 
 #     # Remove punctuation
-#     text = text.translate(str.maketrans('', '', string.punctuation))
+    text = text.translate(str.maketrans('', '', string.punctuation))
 
 #     # Tokenization
-#     sentences = sent_tokenize(text)
-#     tokenized_sentences = [word_tokenize(sentence) for sentence in sentences]
+    sentences = sent_tokenize(text)
+    tokenized_sentences = [word_tokenize(sentence) for sentence in sentences]
 
 #     # Stemming and Lemmatization
-#     preprocessed_text = []
-#     for sentence in tokenized_sentences:
-#         for word in sentence:
-#             if word not in stop_words:
-#                 # Apply lemmatization followed by stemming
-#                 lemmatized_word = lemmatizer.lemmatize(word)
-#                 stemmed_word = stemmer.stem(lemmatized_word)
-#                 preprocessed_text.append(stemmed_word)
+    preprocessed_text = []
+    for sentence in tokenized_sentences:
+        for word in sentence:
+            if word not in stop_words:
+                # Apply lemmatization followed by stemming
+                lemmatized_word = lemmatizer.lemmatize(word)
+                stemmed_word = stemmer.stem(lemmatized_word)
+                preprocessed_text.append(stemmed_word)
 
-#     return ' '.join(preprocessed_text)
+    return ' '.join(preprocessed_text)
 
 # Function for making predictions and displaying results
 def predict_and_display(reviews):
